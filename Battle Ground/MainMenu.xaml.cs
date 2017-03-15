@@ -13,23 +13,26 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Battle_Ground
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class TitlePage : Page
+    public sealed partial class MainMenu : Page
     {
-        public TitlePage()
+        public MainMenu()
         {
             this.InitializeComponent();
         }
 
-        private void _playBtn_Click(object sender, RoutedEventArgs e)
+        private void _backBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainMenu));
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
         }
     }
 }
