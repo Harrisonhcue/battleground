@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Battle_Ground
@@ -27,12 +28,22 @@ namespace Battle_Ground
             this.InitializeComponent();
         }
 
-        private void _backBtn_Click(object sender, RoutedEventArgs e)
+        private void clickBackBtn(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
             {
                 Frame.GoBack();
             }
+        }
+
+        private void clickConfirmSelection(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void togglePlayerMode(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

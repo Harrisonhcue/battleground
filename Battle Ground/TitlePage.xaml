@@ -21,9 +21,9 @@
 
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Battle Ground" Grid.ColumnSpan="2" Margin="20,0,0,20" TextAlignment="Center" FontSize="40"/>
-        <TextBlock x:Name="_rules" Grid.Row="1" TextWrapping="Wrap" Text="Rules" Grid.ColumnSpan="2" Margin="10,10,10,17" FontSize="30"/>
+        <TextBlock x:Name="_txtRules" Grid.Row="1" TextWrapping="Wrap" Text="Rules" Grid.ColumnSpan="2" Margin="10,10,10,17" FontSize="30"/>
         <Button Name="_playBtn" Click="_playBtn_Click" Content="Play" Grid.Row="2" FontSize="20" HorizontalAlignment="Center" Grid.Column="1" Width="304"/>
-        <Button x:Name="_scoreBoardBtn" Content="ScoreBoard" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="304" Height="39" FontSize="20"/>
+        <Button x:Name="_scoreBoardBtn" Content="ScoreBoard" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="304" Height="39" FontSize="20" Click="showScoreBoard"/>
 
     </Grid>
 
