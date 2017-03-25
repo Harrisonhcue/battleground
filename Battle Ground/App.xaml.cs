@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battle_Ground.Presentation;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -72,7 +73,7 @@ namespace Battle_Ground
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(TitlePage), e.Arguments);
+                    rootFrame.Navigate(typeof(Gameplay), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
