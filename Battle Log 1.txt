@@ -1,0 +1,30 @@
+Player vs Player
+Jack vs Sparrow
+
+Osiris vs Jacob
+
+Turn 1: Fireball, Lightning
+
+Turn 1: -40hp, -35hp
+
+Turn 1: 180hp, 160hp
+
+Turn 2: Void, Thunder
+
+Turn 2: -50hp, -60hp
+
+Turn 2: 130hp, 100hp
+
+Turn 3: Reflect, Thunder
+
+Turn 3: -0hp, -60hp
+
+Turn 3: 130hp, 40hp
+
+Turn 4: Void, Thunder
+
+Turn 4: -50hp, -60hp
+
+Turn 4: 80hp, 0hp
+
+Winner: Jack as Osiris

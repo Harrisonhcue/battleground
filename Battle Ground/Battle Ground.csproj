@@ -99,6 +99,9 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Player.cs" />
+    <Compile Include="Presentation\Gameplay.xaml.cs">
+      <DependentUpon>Gameplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TitlePage.xaml.cs">
       <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Gameplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
