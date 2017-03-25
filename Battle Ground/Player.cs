@@ -10,7 +10,7 @@ namespace Battle_Ground
     public class Player
     {
         string _nickname;
-        Character _character;
+       // Character _character;
 
         public string Nickname
         {
@@ -25,7 +25,7 @@ namespace Battle_Ground
             }
         }
 
-        public Character Character
+       /* public Character Character
         {
             get
             {
@@ -36,11 +36,12 @@ namespace Battle_Ground
             {
                 _character = value;
             }
-        }
+        }*/
 
         //Creates a new instance of a Player and initializes Variables
-        public Player()
+        public Player(string nickname)
         {
+            _nickname = nickname;
         }
     }
 }

@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 
@@ -23,9 +24,28 @@ namespace Battle_Ground
     /// </summary>
     public sealed partial class MainMenu : Page
     {
+
         public MainMenu()
         {
             this.InitializeComponent();
+            showCharacters();
+        }
+
+        private void showCharacters()
+        {
+            Character char1 = new Character();
+            char1.CharImage = "Assets/char1.png";
+            char1.CharName = "Character 1";
+            Character char2 = new Character();
+            char2.CharImage = "Assets/char1.png";
+            char2.CharName = "Character 2";
+
+            _charListView.Items.Add(char1);
+            _charListView.Items.Add(char2);
+            /* foreach (character in _game.CharList)
+             {
+                 _charListView.Items.Add(character);
+             }*/
         }
 
         private void clickBackBtn(object sender, RoutedEventArgs e)
