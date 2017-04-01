@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,10 +24,12 @@ namespace Battle_Ground
     /// </summary>
     public sealed partial class TitlePage : Page
     {
+
         private StreamReader scorefile;
         public TitlePage()
         {
             this.InitializeComponent();
+
         }
 
         private void _playBtn_Click(object sender, RoutedEventArgs e)
@@ -37,10 +40,14 @@ namespace Battle_Ground
         private async void showScoreBoard(object sender, RoutedEventArgs e)
         {
 
-            
+
             //Yet to implement method to show scoreboard
             MessageDialog msg = new MessageDialog("TO-DO:Show ScoreBoard");
             await msg.ShowAsync();
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Debug.Assert(true, "Print");
         }
     }
 }

@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace Battle_Ground
 {
-    
+
     public class Player
     {
-        string _nickname;
-       // Character _character;
+        private string _nickname;
+        private Character _character;
 
+
+        //Creates a new instance of a Player and initializes Variables
+        public Player()
+        {
+            _nickname = null;
+            _character = null;
+        }
         public string Nickname
         {
             get
@@ -25,7 +32,7 @@ namespace Battle_Ground
             }
         }
 
-       /* public Character Character
+        internal Character Character
         {
             get
             {
@@ -36,12 +43,10 @@ namespace Battle_Ground
             {
                 _character = value;
             }
-        }*/
-
-        //Creates a new instance of a Player and initializes Variables
-        public Player(string nickname)
-        {
-            _nickname = nickname;
         }
+
+
+
+
     }
 }
