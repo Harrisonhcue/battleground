@@ -33,6 +33,7 @@ namespace Battle_Ground
             _game = new Game();
             addCharactersToListViews();
             _player2Nickname.IsEnabled = false;
+            _backBtn.Visibility = Visibility.Collapsed; ;
         }
 
         private void addCharactersToListViews()
@@ -41,6 +42,7 @@ namespace Battle_Ground
             {
                 _charListView.Items.Add(character);
                 _charListView2.Items.Add(character);
+                
             }
         }
 
