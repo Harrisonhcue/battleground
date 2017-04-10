@@ -59,14 +59,14 @@ namespace Battle_Ground
         private void setCharacterList()
         {
             _characterList = new List<Character>();
-            Character Laloor = new Character();
-            Laloor.CharImage = "Assets/Laloor.png";
-            Laloor.CharName = $"Laloor";
-            Character character2 = new Character();
-            character2.CharImage = "Assets/char1.png";
-            character2.CharName = "Dest";
-            _characterList.Add(Laloor);
-            _characterList.Add(character2);
+            Character BlueLizard = new Character();
+            BlueLizard.CharImageSource = "Assets/BlueLizard.png";
+            BlueLizard.CharName = $"Blue Lizard";
+            Character Adventurer = new Character();
+            Adventurer.CharImageSource = "Assets/Adventurer.png";
+            Adventurer.CharName = "Dest";
+            _characterList.Add(BlueLizard);
+            _characterList.Add(Adventurer);
 
         }
 
