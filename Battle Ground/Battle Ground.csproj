@@ -98,6 +98,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Character.cs" />
+    <Compile Include="Characters\Adventurer.cs" />
+    <Compile Include="Characters\BlueLizard.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -118,8 +120,8 @@
     <None Include="Battle Ground_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\char1.png" />
-    <Content Include="Assets\Laloor.png" />
+    <Content Include="Assets\Adventurer.png" />
+    <Content Include="Assets\BlueLizard.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -20,28 +20,28 @@
         </Grid.ColumnDefinitions>
         <Border Margin="90,19,90,20" Grid.Row="3">
             <Grid>
-                <Button x:Name="_player1Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="173"/>
-                <Button x:Name="_player1Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173"/>
-                <Button x:Name="_player1Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173"/>
-                <Button x:Name="_player1Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173"/>
+                <Button x:Name="_btnPlayer1Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer1Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer1Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer1Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
 
             </Grid>
         </Border>
         <Border Margin="90,19,90,20" Grid.Row="3" Grid.Column="1">
             <Grid>
-                <Button x:Name="_player2Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" Margin="0,1,0,0" VerticalAlignment="Top" Width="173"/>
-                <Button x:Name="_player2Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173"/>
-                <Button x:Name="_player2Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173"/>
-                <Button x:Name="_player2Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173"/>
+                <Button x:Name="_btnPlayer2Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" Margin="0,1,0,0" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer2Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer2Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
+                <Button x:Name="_btnPlayer2Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
 
             </Grid>
         </Border>
-        <TextBlock x:Name="_player1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Text="Player 1 Informaiton" Grid.Row="2"/>
-        <TextBlock x:Name="_player2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Text="Player 2 Informaiton" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Text="Player 1 Information"/>
+        <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="Player 2 Information"/>
         <StackPanel Margin="192,21,191,16" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382">
             <TextBlock x:Name="_txtChar1Health" HorizontalAlignment="Center" Margin="79,0,78,0" TextWrapping="Wrap" Text="Player 1 Health" VerticalAlignment="Top"/>
 
-            <Image x:Name="_imgChar1" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0"/>
+            <Image x:Name="_imgChar1" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0" Source="ms-appx:///Assets/Adventurer.png"/>
         </StackPanel>
         <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left">
             <TextBlock x:Name="_txtPlayer1Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 1 Name" VerticalAlignment="Top"/>
@@ -50,7 +50,11 @@
         <StackPanel Margin="192,21,191,16" Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382">
             <TextBlock x:Name="_txtChar2Health" HorizontalAlignment="Center" Margin="79,0,78,0" TextWrapping="Wrap" Text="Player 2 Health" VerticalAlignment="Top"/>
 
-            <Image x:Name="_imgChar2" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0"/>
+            <Image x:Name="_imgChar2" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0" Source="ms-appx:///Assets/Adventurer.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <CompositeTransform ScaleX="-1"/>
+                </Image.RenderTransform>
+            </Image>
         </StackPanel>
         <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="1">
             <TextBlock x:Name="_txtPlayer2Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 2 Name" VerticalAlignment="Top"/>
