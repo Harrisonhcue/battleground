@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\char1.png" />
+    <Content Include="Assets\Hoo.png" />
     <Content Include="Assets\Laloor.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
