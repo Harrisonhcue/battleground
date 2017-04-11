@@ -44,6 +44,19 @@ namespace Battle_Ground
             }
         }
 
+        public double Health
+        {
+            get
+            {
+                return _health;
+            }
+
+            set
+            {
+                _health = value;
+            }
+        }
+
         // All attacks available to all characters, take the paramaters of the player that is attacking and the player that is being attacked.
         public void Bite(Player _playerAttacking, Player _playerAttacked)
         {
@@ -55,6 +68,10 @@ namespace Battle_Ground
         {
             _dmg = _playerAttacking.Character._attk * 1.5;
             _playerAttacked.Character._health -= _dmg;
+        }
+
+        public virtual void Attack1(Player _playerAttacking, Player _playerAttacked)
+        {
         }
     }
 }

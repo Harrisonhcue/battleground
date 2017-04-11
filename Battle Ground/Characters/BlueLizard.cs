@@ -15,11 +15,11 @@ namespace Battle_Ground.Characters
             _charName = "Blue Lizard";
             _charImageSource = "ms-appx:///Assets/BlueLizard.png";
             _attk = 8;
-            _health = 12;
+            _health = 120;
         }
 
         // Sets the 4 attacks that the player can choose if they have chosen the character "Blue Lizard"
-        public void Attack1 (Player _playerAttackingWithBlueLizard, Player _playerAttackedByBlueLIzard)
+        public override void Attack1 (Player _playerAttackingWithBlueLizard, Player _playerAttackedByBlueLIzard)
         {
             Bite(_playerAttackingWithBlueLizard, _playerAttackedByBlueLIzard);
         }

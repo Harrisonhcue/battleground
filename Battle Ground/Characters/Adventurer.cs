@@ -15,11 +15,11 @@ namespace Battle_Ground.Characters
             _charName = "Adventurer";
             _charImageSource = "ms-appx:///Assets/Adventurer.png";
             _attk = 10;
-            _health = 10;
+            _health = 100;
         }
 
         // Sets the 4 attacks that the player can choose if they have chosen the character "Adventurer"
-        public void Attack1(Player _playerAttackingWithAdventurer, Player _playerAttackedByAdventurer)
+        public override void Attack1(Player _playerAttackingWithAdventurer, Player _playerAttackedByAdventurer)
         {
             Stab(_playerAttackingWithAdventurer, _playerAttackedByAdventurer);
         }

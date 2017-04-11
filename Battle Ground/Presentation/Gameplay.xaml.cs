@@ -25,19 +25,12 @@ namespace Battle_Ground.Presentation
     public sealed partial class Gameplay : Page
     {
         private Game _game;
+
         public Gameplay()
         {
-            this.InitializeComponent();
             // Initalize navigation context variable
             _game = null;
-
-            // Create character classes
-            Adventurer _aventurer = new Adventurer();
-            BlueLizard _blueLizard = new BlueLizard();
-
-            // Set character images based on character type sources
-            _imgChar1.Source = new BitmapImage(new Uri(_aventurer.CharImageSource));
-            _imgChar2 .Source= new BitmapImage(new Uri(_blueLizard.CharImageSource));
+            this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -50,6 +43,11 @@ namespace Battle_Ground.Presentation
             _txtPlayer2Name.Text = _game.Player2.Nickname;
             _txtChar1Name.Text = _game.Player1.Character.CharName;
             _txtChar2Name.Text = _game.Player2.Character.CharName;
+            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
+
+            // Set character images based on character type sources
+            _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
+            _imgChar2.Source = new BitmapImage(new Uri(_game.Player2.Character.CharImageSource));
         }
 
         /// <summary>
@@ -93,7 +91,8 @@ namespace Battle_Ground.Presentation
                 // Calls method that correspond to the chosen characters attack denoted by the button selected.
                 if (sender == _btnPlayer2Attack1)
                 {
-                    _game.Player1.Character.Bite(_game.Player1, _game.Player2);
+                    _game.Player2.Character.Attack1(_game.Player1, _game.Player2);
+                    _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
                 }
                 else if (sender == _btnPlayer2Attack2)
                 {
