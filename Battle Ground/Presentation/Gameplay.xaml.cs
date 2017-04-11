@@ -50,6 +50,7 @@ namespace Battle_Ground.Presentation
             _txtPlayer2Name.Text = _game.Player2.Nickname;
             _txtChar1Name.Text = _game.Player1.Character.CharName;
             _txtChar2Name.Text = _game.Player2.Character.CharName;
+            
         }
 
         /// <summary>

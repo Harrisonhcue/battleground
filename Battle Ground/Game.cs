@@ -62,11 +62,7 @@ namespace Battle_Ground
         {
             _characterList = new List<Character>();
             Character char1 = new BlueLizard();
-            char1.CharImageSource = "Assets/BlueLizard.png";
-            char1.CharName = $"BlueLizard";
             Character char2 = new Adventurer();
-            char2.CharImageSource = "Assets/Adventurer.png";
-            char2.CharName = "Adventurer";
             _characterList.Add(char1);
             _characterList.Add(char2);
 
