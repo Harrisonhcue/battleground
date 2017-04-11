@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Battle_Ground.Presentation;
+using Battle_Ground.Characters;
 
 namespace Battle_Ground
 {
@@ -59,14 +61,14 @@ namespace Battle_Ground
         private void setCharacterList()
         {
             _characterList = new List<Character>();
-            Character BlueLizard = new Character();
-            BlueLizard.CharImageSource = "Assets/BlueLizard.png";
-            BlueLizard.CharName = $"BlueLizard";
-            Character Adventurer = new Character();
-            Adventurer.CharImageSource = "Assets/Adventurer.png";
-            Adventurer.CharName = "Adventurer";
-            _characterList.Add(BlueLizard);
-            _characterList.Add(Adventurer);
+            Character char1 = new BlueLizard();
+            char1.CharImageSource = "Assets/BlueLizard.png";
+            char1.CharName = $"BlueLizard";
+            Character char2 = new Adventurer();
+            char2.CharImageSource = "Assets/Adventurer.png";
+            char2.CharName = "Adventurer";
+            _characterList.Add(char1);
+            _characterList.Add(char2);
 
         }
 

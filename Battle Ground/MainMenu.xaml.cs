@@ -90,27 +90,13 @@ namespace Battle_Ground
             if (sender == _charListView)
             {
                 _game.Player1 = new Player();
+                _game.Player1.Character = selection;
 
-                if (selection.CharName == "BlueLizard")
-                {
-                    _game.Player1.Character = new BlueLizard();
-                }
-                else if (selection.CharName == "Adventurer")
-                {
-                    _game.Player1.Character = new Adventurer();
-                }
             }
             else if (sender == _charListView2)
             {
                 _game.Player2 = new Player();
-                if (selection.CharName == "BlueLizard")
-                {
-                    _game.Player2.Character = new BlueLizard();
-                }
-                else if (selection.CharName == "Adventurer")
-                {
-                    _game.Player2.Character = new Adventurer();
-                }
+                _game.Player2.Character = selection;
 
 
             }
