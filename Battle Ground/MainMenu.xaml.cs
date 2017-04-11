@@ -1,4 +1,5 @@
-﻿using Battle_Ground.Presentation;
+﻿using Battle_Ground.Characters;
+using Battle_Ground.Presentation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,7 +43,7 @@ namespace Battle_Ground
             {
                 _charListView.Items.Add(character);
                 _charListView2.Items.Add(character);
-                
+
             }
         }
 
@@ -89,12 +90,28 @@ namespace Battle_Ground
             if (sender == _charListView)
             {
                 _game.Player1 = new Player();
-                _game.Player1.Character = selection;
+
+                if (selection.CharName == "BlueLizard")
+                {
+                    _game.Player1.Character = new BlueLizard();
+                }
+                else if (selection.CharName == "Adventurer")
+                {
+                    _game.Player1.Character = new Adventurer();
+                }
             }
             else if (sender == _charListView2)
             {
                 _game.Player2 = new Player();
-                _game.Player2.Character = selection;
+                if (selection.CharName == "BlueLizard")
+                {
+                    _game.Player2.Character = new BlueLizard();
+                }
+                else if (selection.CharName == "Adventurer")
+                {
+                    _game.Player2.Character = new Adventurer();
+                }
+
 
             }
         }
