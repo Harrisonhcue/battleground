@@ -50,8 +50,6 @@ namespace Battle_Ground.Presentation
             // Set character images based on character type sources
             _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
             _imgChar2.Source = new BitmapImage(new Uri(_game.Player2.Character.CharImageSource));
-
-            // Creates character object of each character
         }
 
         /// <summary>

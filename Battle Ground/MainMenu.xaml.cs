@@ -87,18 +87,39 @@ namespace Battle_Ground
         private void characterSelected(object sender, ItemClickEventArgs e)
         {
             Character selection = e.ClickedItem as Character;
+            Character player1Selection = new Character();
+            Character player2Selection = new Character();
+
             if (sender == _charListView)
             {
                 _game.Player1 = new Player();
-                _game.Player1.Character = selection;
 
+                if (selection.CharName == "Blue Lizard")
+                {
+                    player1Selection = new BlueLizard();
+                }
+                else if (selection.CharName == "Adventurer")
+                {
+                    player1Selection = new BlueLizard();
+                }
+
+                _game.Player1.Character = player1Selection;
             }
+
             else if (sender == _charListView2)
             {
                 _game.Player2 = new Player();
-                _game.Player2.Character = selection;
 
+                if (selection.CharName == "Blue Lizard")
+                {
+                    player2Selection = new BlueLizard();
+                }
+                else if (selection.CharName == "Adventurer")
+                {
+                    player2Selection = new Adventurer();
+                }
 
+                _game.Player2.Character = player2Selection;
             }
         }
 
