@@ -16,7 +16,7 @@ namespace Battle_Ground
         protected double _health = 0;
         protected double _dmg = 0;
 
-        // Property to allow other classes to access the character image source
+        // Property to allow other classes to access the character's image source
         public string CharImageSource
         {
             get
@@ -30,7 +30,7 @@ namespace Battle_Ground
             }
         }
 
-        // Property to allow other classes to access the character name
+        // Property to allow other classes to access the character's name
         public string CharName
         {
             get
@@ -44,6 +44,7 @@ namespace Battle_Ground
             }
         }
 
+        // Property to allow other classes to access the character's health
         public double Health
         {
             get
@@ -70,7 +71,17 @@ namespace Battle_Ground
             _playerAttacked.Character._health -= _dmg;
         }
 
+        // Virtual attack methods that are overriden by each character type with one of the attacks denoted by the character class.
         public virtual void Attack1(Player _playerAttacking, Player _playerAttacked)
+        {
+        }
+        public virtual void Attack2(Player _playerAttacking, Player _playerAttacked)
+        {
+        }
+        public virtual void Attack3(Player _playerAttacking, Player _playerAttacked)
+        {
+        }
+        public virtual void Attack4(Player _playerAttacking, Player _playerAttacked)
         {
         }
     }
