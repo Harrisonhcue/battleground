@@ -249,6 +249,9 @@ namespace Battle_Ground.Presentation
 
         public void EndGame(string winner)
         {
+            ChangeButtonState(1, false);
+            ChangeButtonState(2, false);
+
             if (winner == "Tie")
             {
                 _txtWinnerDisplay.Text = "Tie";

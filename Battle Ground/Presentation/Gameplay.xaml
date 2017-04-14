@@ -60,6 +60,6 @@
             <TextBlock x:Name="_txtPlayer2Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 2 Name" VerticalAlignment="Top"/>
             <TextBlock x:Name="_txtChar2Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Character 2 Name" VerticalAlignment="Top"/>
         </StackPanel>
-        <TextBlock x:Name="_txtWinnerDisplay" Margin="10,147,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionChanged="textBlock_SelectionChanged" FontSize="50" Grid.ColumnSpan="2" Width="1270" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="_txtWinnerDisplay" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" FontSize="50" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
