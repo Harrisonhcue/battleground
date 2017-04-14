@@ -31,6 +31,7 @@ namespace Battle_Ground.Presentation
         private bool _player2AttackChosen;
         private int _player1AttackNum = 0;
         private int _player2AttackNum = 0;
+        private Random _randNum = new Random();
 
         public Gameplay()
         {
@@ -55,6 +56,12 @@ namespace Battle_Ground.Presentation
             // Set character images based on character type sources
             _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
             _imgChar2.Source = new BitmapImage(new Uri(_game.Player2.Character.CharImageSource));
+
+            // If player 2 is a PC, provide a random attack.
+            if (_game.IsHuman == false)
+            {
+                BattleState(2, _randNum.Next(1, 5));
+            }
         }
 
         /// <summary>
@@ -180,7 +187,14 @@ namespace Battle_Ground.Presentation
 
                 // Reenables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
                 ChangeButtonState(1, true);
-                ChangeButtonState(2, true);
+                if (_game.IsHuman == false)
+                {
+                    BattleState(2, _randNum.Next(1, 5));
+                }
+                else if (_game.IsHuman == true)
+                {
+                    ChangeButtonState(2, true);
+                }
 
                 CheckWin();
             }
@@ -242,11 +256,12 @@ namespace Battle_Ground.Presentation
                 winner = "Player 1";
                 EndGame(winner);
             }
-            /*else if (_game.Player1.Character.Health > 0 & _game.Player2.Character.Health > 0)
-            {
-            }*/
         }
 
+        /// <summary>
+        /// Ends the game. Disables attack buttons, and displays the winner.
+        /// </summary>
+        /// <param name="winner">String that contains the winner of the game</param>
         public void EndGame(string winner)
         {
             ChangeButtonState(1, false);

@@ -100,6 +100,9 @@
     <Compile Include="Character.cs" />
     <Compile Include="Characters\Adventurer.cs" />
     <Compile Include="Characters\BlueLizard.cs" />
+    <Compile Include="Characters\Mage.cs" />
+    <Compile Include="Characters\RedSeal.cs" />
+    <Compile Include="Characters\SkeletonKnight.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -128,6 +131,7 @@
     <Content Include="Assets\Hoo.png" />
     <Content Include="Assets\RedSeal.png" />
     <Content Include="Assets\Peebs.png" />
+    <Content Include="Assets\Mage.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -136,6 +140,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Skeleton Knight.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
