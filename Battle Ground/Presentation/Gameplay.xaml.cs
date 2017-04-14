@@ -1,6 +1,7 @@
 ﻿using Battle_Ground.Characters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,7 +37,6 @@ namespace Battle_Ground.Presentation
             // Initalize navigation context variable
             _game = null;
             this.InitializeComponent();
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,112 +49,12 @@ namespace Battle_Ground.Presentation
             _txtPlayer2Name.Text = _game.Player2.Nickname;
             _txtChar1Name.Text = _game.Player1.Character.CharName;
             _txtChar2Name.Text = _game.Player2.Character.CharName;
-            _txtChar1Health.Text = $"Health: {_game.Player1.Character.Health.ToString()}";
-            _txtChar2Health.Text = $"Health: {_game.Player2.Character.Health.ToString()}";
+            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
+            _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
 
             // Set character images based on character type sources
             _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
             _imgChar2.Source = new BitmapImage(new Uri(_game.Player2.Character.CharImageSource));
-        }
-
-        /// <summary>
-        /// Displays the updated health of each character.
-        /// </summary>
-        public void UpdateLabels()
-        {
-            _txtChar1Health.Text = $"Health: {_game.Player1.Character.Health.ToString()}";
-            _txtChar2Health.Text = $"Health:{_game.Player2.Character.Health.ToString()}";
-        }
-
-        /// <summary>
-        /// Changes if the attack buttons can be clicked or not
-        /// </summary>
-        /// <param name="playerNum">Player who's button's states will be changed</param>
-        /// <param name="buttonState">Determines whether the buttons will be disabled or enabled</param>
-        public void ChangeButtonState(int playerNum, bool buttonState)
-        {
-            if (playerNum == 1)
-            {
-                _btnPlayer1Attack1.IsEnabled = buttonState;
-                _btnPlayer1Attack2.IsEnabled = buttonState;
-                _btnPlayer1Attack3.IsEnabled = buttonState;
-                _btnPlayer1Attack4.IsEnabled = buttonState;
-            }
-            else if (playerNum == 2)
-            {
-                _btnPlayer2Attack1.IsEnabled = buttonState;
-                _btnPlayer2Attack2.IsEnabled = buttonState;
-                _btnPlayer2Attack3.IsEnabled = buttonState;
-                _btnPlayer2Attack4.IsEnabled = buttonState;
-            }
-        }
-
-        /// <summary>
-        /// Method that waits until both characters have chosen an attack and then executes both at the same time. Reenables the attack buttons.
-        /// </summary>
-        /// <param name="playerNum"></param>
-        /// <param name="attackNum"></param>
-        public void BattleState(int playerNum, int attackNum)
-        {
-            // Provides information to local variables based on which player has chosen their attack. Disables attack buttons for player that has chosen an attack.
-            if (playerNum == 1)
-            {
-                // Disables all attack buttons for player 1
-                ChangeButtonState(1, false);
-                _player1AttackChosen = true;
-                _player1AttackNum = attackNum;
-            }
-            else if (playerNum == 2)
-            {
-                // Disables all attack buttons for player 2
-                ChangeButtonState(2, false);
-                _player2AttackChosen = true;
-                _player2AttackNum = attackNum;
-            }
-
-            // If both players have chosen an attack, call method that executes each player's attack chosen.
-            if (_player1AttackChosen == true & _player2AttackChosen == true)
-            {
-                switch (_player1AttackNum)
-                {
-                    case 1:
-                        _game.Player1.Character.Attack1(_game.Player1, _game.Player2);
-                        break;
-                    case 2:
-                        _game.Player1.Character.Attack2(_game.Player1, _game.Player2);
-                        break;
-                    case 3:
-                        _game.Player1.Character.Attack3(_game.Player1, _game.Player2);
-                        break;
-                    case 4:
-                        _game.Player1.Character.Attack4(_game.Player1, _game.Player2);
-                        break;
-                }
-
-                switch (_player2AttackNum)
-                {
-                    case 1:
-                        _game.Player2.Character.Attack1(_game.Player2, _game.Player1);
-                        break;
-                    case 2:
-                        _game.Player2.Character.Attack2(_game.Player2, _game.Player1);
-                        break;
-                    case 3:
-                        _game.Player2.Character.Attack3(_game.Player2, _game.Player1);
-                        break;
-                    case 4:
-                        _game.Player2.Character.Attack4(_game.Player2, _game.Player1);
-                        break;
-                }
-
-                // Return both attacks to unchosen.
-                _player1AttackChosen = false;
-                _player2AttackChosen = false;
-
-                // Reenables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
-                ChangeButtonState(1, true);
-                ChangeButtonState(2, true);
-            }
         }
 
         /// <summary>
@@ -213,6 +113,160 @@ namespace Battle_Ground.Presentation
 
                 // Updates the health of the characters
                 UpdateLabels();
+            }
+        }
+
+        /// <summary>
+        /// Method that waits until both characters have chosen an attack and then executes both at the same time. Reenables the attack buttons.
+        /// </summary>
+        /// <param name="playerNum"></param>
+        /// <param name="attackNum"></param>
+        public void BattleState(int playerNum, int attackNum)
+        {
+            // Provides information to local variables based on which player has chosen their attack. Disables attack buttons for player that has chosen an attack.
+            if (playerNum == 1)
+            {
+                // Disables all attack buttons for player 1
+                ChangeButtonState(1, false);
+                _player1AttackChosen = true;
+                _player1AttackNum = attackNum;
+            }
+            else if (playerNum == 2)
+            {
+                // Disables all attack buttons for player 2
+                ChangeButtonState(2, false);
+                _player2AttackChosen = true;
+                _player2AttackNum = attackNum;
+            }
+            
+            // If both players have chosen an attack, call method that executes each player's attack chosen.
+            if (_player1AttackChosen == true & _player2AttackChosen == true)
+            {
+               switch(_player1AttackNum)
+                {
+                    case 1:
+                        _game.Player1.Character.Attack1(_game.Player1, _game.Player2);
+                        break;
+                    case 2:
+                        _game.Player1.Character.Attack2(_game.Player1, _game.Player2);
+                        break;
+                    case 3:
+                        _game.Player1.Character.Attack3(_game.Player1, _game.Player2);
+                        break;
+                    case 4:
+                        _game.Player1.Character.Attack4(_game.Player1, _game.Player2);
+                        break;
+                }
+
+                switch (_player2AttackNum)
+                {
+                    case 1:
+                        _game.Player2.Character.Attack1(_game.Player2, _game.Player1);
+                        break;
+                    case 2:
+                        _game.Player2.Character.Attack2(_game.Player2, _game.Player1);
+                        break;
+                    case 3:
+                        _game.Player2.Character.Attack3(_game.Player2, _game.Player1);
+                        break;
+                    case 4:
+                        _game.Player2.Character.Attack4(_game.Player2, _game.Player1);
+                        break;
+                }
+
+                // Return both attacks to unchosen.
+                _player1AttackChosen = false;
+                _player2AttackChosen = false;
+
+                // Reenables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
+                ChangeButtonState(1, true);
+                ChangeButtonState(2, true);
+
+                CheckWin();
+            }
+        }
+
+        /// <summary>
+        /// Displays the updated health of each character.
+        /// </summary>
+        public void UpdateLabels()
+        {
+            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
+            _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+        }
+
+        /// <summary>
+        /// Changes if the attack buttons can be clicked or not
+        /// </summary>
+        /// <param name="playerNum">Player who's button's states will be changed</param>
+        /// <param name="buttonState">Determines whether the buttons will be disabled or enabled</param>
+        public void ChangeButtonState(int playerNum, bool buttonState)
+        {
+            if (playerNum == 1)
+            {
+                _btnPlayer1Attack1.IsEnabled = buttonState;
+                _btnPlayer1Attack2.IsEnabled = buttonState;
+                _btnPlayer1Attack3.IsEnabled = buttonState;
+                _btnPlayer1Attack4.IsEnabled = buttonState;
+            }
+            else if (playerNum == 2)
+            {
+                _btnPlayer2Attack1.IsEnabled = buttonState;
+                _btnPlayer2Attack2.IsEnabled = buttonState;
+                _btnPlayer2Attack3.IsEnabled = buttonState;
+                _btnPlayer2Attack4.IsEnabled = buttonState;
+            }
+        }
+
+        /// <summary>
+        /// Returns outcome of the game if either character's health has reached 0.
+        /// </summary>
+        /// <returns></returns>
+        public void CheckWin()
+        {
+            string winner = "";
+            if (_game.Player1.Character.Health <= 0 & _game.Player2.Character.Health <= 0)
+            {
+                winner = "Tie";
+                EndGame(winner);
+            }
+
+            else if (_game.Player1.Character.Health <=0)
+            {
+                winner = "Player 2";
+                EndGame(winner);
+            }
+
+            else if (_game.Player2.Character.Health <= 0)
+            {
+                winner = "Player 1";
+                EndGame(winner);
+            }
+            /*else if (_game.Player1.Character.Health > 0 & _game.Player2.Character.Health > 0)
+            {
+            }*/
+        }
+
+        public void EndGame(string winner)
+        {
+            ChangeButtonState(1, false);
+            ChangeButtonState(2, false);
+
+            if (winner == "Tie")
+            {
+                _txtWinnerDisplay.Text = "Tie";
+                _game.Player1.Character.Health = 0;
+                _game.Player2.Character.Health = 0;
+            }
+            else if (winner == "Player 1")
+            {
+                _txtWinnerDisplay.Text = "Player 1 Wins";
+                _game.Player2.Character.Health = 0;
+            }
+            else if (winner =="Player 2")
+            {
+                _txtWinnerDisplay.Text = "Player 2 Wins";
+                _game.Player1.Character.Health = 0;
             }
         }
     }
