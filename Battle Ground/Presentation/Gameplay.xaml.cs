@@ -138,11 +138,11 @@ namespace Battle_Ground.Presentation
                 _player2AttackChosen = true;
                 _player2AttackNum = attackNum;
             }
-            
+
             // If both players have chosen an attack, call method that executes each player's attack chosen.
             if (_player1AttackChosen == true & _player2AttackChosen == true)
             {
-               switch(_player1AttackNum)
+                switch (_player1AttackNum)
                 {
                     case 1:
                         _game.Player1.Character.Attack1(_game.Player1, _game.Player2);
@@ -231,7 +231,7 @@ namespace Battle_Ground.Presentation
                 EndGame(winner);
             }
 
-            else if (_game.Player1.Character.Health <=0)
+            else if (_game.Player1.Character.Health <= 0)
             {
                 winner = "Player 2";
                 EndGame(winner);
@@ -263,7 +263,7 @@ namespace Battle_Ground.Presentation
                 _txtWinnerDisplay.Text = "Player 1 Wins";
                 _game.Player2.Character.Health = 0;
             }
-            else if (winner =="Player 2")
+            else if (winner == "Player 2")
             {
                 _txtWinnerDisplay.Text = "Player 2 Wins";
                 _game.Player1.Character.Health = 0;
