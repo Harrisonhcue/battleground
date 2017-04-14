@@ -174,8 +174,6 @@ namespace Battle_Ground.Presentation
                         break;
                 }
 
-                CheckWin();
-
                 // Return both attacks to unchosen.
                 _player1AttackChosen = false;
                 _player2AttackChosen = false;
@@ -183,6 +181,8 @@ namespace Battle_Ground.Presentation
                 // Reenables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
                 ChangeButtonState(1, true);
                 ChangeButtonState(2, true);
+
+                CheckWin();
             }
         }
 
@@ -251,12 +251,19 @@ namespace Battle_Ground.Presentation
         {
             if (winner == "Tie")
             {
+                _txtWinnerDisplay.Text = "Tie";
+                _game.Player1.Character.Health = 0;
+                _game.Player2.Character.Health = 0;
             }
             else if (winner == "Player 1")
             {
+                _txtWinnerDisplay.Text = "Player 1 Wins";
+                _game.Player2.Character.Health = 0;
             }
             else if (winner =="Player 2")
             {
+                _txtWinnerDisplay.Text = "Player 2 Wins";
+                _game.Player1.Character.Health = 0;
             }
         }
     }
