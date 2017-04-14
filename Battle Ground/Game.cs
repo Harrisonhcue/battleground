@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Battle_Ground.Presentation;
 using Battle_Ground.Characters;
+using System.IO;
 
 namespace Battle_Ground
 {
@@ -117,8 +118,33 @@ namespace Battle_Ground
 
         }
 
+        // Saves the information of the game into a file.
+        internal void Save(StreamWriter writer, string winner)
+        {
+            // Save the game details
 
+            // Check if human to save information appropriately.
+            if (_isHuman == true)
+            {
+                writer.WriteLine("Player vs Player");
+            }
+            else if (_isHuman == false)
+            {
+                writer.WriteLine("Player vs PC");
+            }
 
+            // Save player nicknames and character choices
+            writer.WriteLine($"{_player1.Nickname} as {_player1.Character.CharName} VS {_player2.Nickname} as {_player2.Character.CharName}");
 
+            if (winner == "Tie")
+            {
+                writer.WriteLine("Tie");
+            }
+            else
+            {
+                // Save the winner of the game
+                writer.WriteLine($"Winner: {winner}");
+            }
+        }
     }
 }

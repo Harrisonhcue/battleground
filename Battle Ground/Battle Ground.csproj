@@ -132,6 +132,7 @@
     <Content Include="Assets\RedSeal.png" />
     <Content Include="Assets\Peebs.png" />
     <Content Include="Assets\Mage.png" />
+    <Content Include="Assets\SkeletonKnight.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -140,7 +141,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Assets\Skeleton Knight.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
