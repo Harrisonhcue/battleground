@@ -14,6 +14,7 @@ namespace Battle_Ground
         private Player _player2;
         private List<Character> _characterList1;
         private List<Character> _characterList2;
+        private bool _isHuman;
 
         public Game()
         {
@@ -70,6 +71,18 @@ namespace Battle_Ground
             }
 
 
+        }
+
+        public bool IsHuman
+        {
+            get
+            {
+                return _isHuman;
+            }
+            set
+            {
+                _isHuman = value;
+            }
         }
 
         private void setCharacterList1()

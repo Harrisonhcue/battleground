@@ -156,17 +156,20 @@ namespace Battle_Ground
                 if (_player2Nickname.Text.Length != 0)
                 {
                     _game.Player2.Nickname = _player2Nickname.Text;
+                    _game.IsHuman = true;
                     value = true;
                 }
                 else
                 {
                     _game.Player2.Nickname = "Player 2";
+                    _game.IsHuman = true;
                     value = true;
                 }
             }
             else
             {
                 _game.Player2.Nickname = "PC";
+                _game.IsHuman = false;
                 value = true;
             }
             return value;
