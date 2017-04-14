@@ -90,9 +90,15 @@ namespace Battle_Ground
             _characterList1 = new List<Character>();
             Character char1 = new BlueLizard();
             Character char2 = new Adventurer();
-            //Character cha3 = new;
+            Character char3 = new SkeletonKnight();
+            Character char4 = new RedSeal();
+            Character char5 = new Mage();
             _characterList1.Add(char1);
             _characterList1.Add(char2);
+            _characterList1.Add(char3);
+            _characterList1.Add(char4);
+            _characterList1.Add(char5);
+
 
         }
         private void setCharacterList2()
@@ -100,9 +106,15 @@ namespace Battle_Ground
             _characterList2 = new List<Character>();
             Character char1 = new BlueLizard();
             Character char2 = new Adventurer();
-            //Character cha3 = new;
+            Character char3 = new SkeletonKnight();
+            Character char4 = new RedSeal();
+            Character char5 = new Mage();
             _characterList2.Add(char1);
             _characterList2.Add(char2);
+            _characterList2.Add(char3);
+            _characterList2.Add(char4);
+            _characterList2.Add(char5);
+
         }
 
 

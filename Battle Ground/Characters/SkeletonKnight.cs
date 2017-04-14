@@ -12,7 +12,7 @@ namespace Battle_Ground.Characters
         {
             // Sets unique values for the character name, image source, attack, and health.
             _charName = "Skeleton Knight";
-            _charImageSource = "ms-appx:///Assets/SkeletonKnight.png";
+            _charImageSource = "ms-appx:///Assets/Skeleton Knight.png";
             _attk = 10;
             _health = 100;
         }
