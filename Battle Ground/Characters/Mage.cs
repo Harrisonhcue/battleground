@@ -17,7 +17,7 @@ namespace Battle_Ground.Characters
             _health = 100;
         }
 
-        // Sets the 4 attacks that the player can choose if they have chosen the character "Adventurer"
+        // Sets the 4 attacks that the player can choose if they have chosen the character
         public override void Attack1(Player _playerAttackingWithMage, Player _playerAttackedByMage)
         {
             Stab(_playerAttackingWithMage, _playerAttackedByMage);

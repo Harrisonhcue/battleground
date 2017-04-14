@@ -42,7 +42,6 @@ namespace Battle_Ground
             _game = new Game();
             addCharactersToListViews();
             _player2Nickname.IsEnabled = false;
-            _backBtn.Visibility = Visibility.Collapsed; ;
             _randomizer = new Random();
         }
         /// <summary>
@@ -87,7 +86,7 @@ namespace Battle_Ground
                     Frame.Navigate(typeof(Gameplay), _game);
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageDialog exception = new MessageDialog("You need to select a character for Player 1 and 2");
                 await exception.ShowAsync();
@@ -186,6 +185,7 @@ namespace Battle_Ground
 
                 _game.Player1.Character = _game.CharacterList1[_randomizer.Next(_game.CharacterList1.Count)];
                 _charListView.SelectedItem = _game.Player1.Character;
+
 
             }
             else if (sender == _btnRandomP2)

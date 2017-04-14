@@ -22,9 +22,13 @@
             <Setter Property="Foreground" Value="#FF243B43"/>
             <Setter Property="FontFamily" Value="Fantasy"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="56"/>
         </Style>
     </Page.Resources>
-    <Grid x:Name="_charSelectedTxtBox" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="_charSelectedTxtBox">
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/bg.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -69,17 +73,17 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="_selectionBtn" Content="Confirm Selection" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="304" FontSize="20" Click="clickConfirmSelection" Style="{StaticResource ResourceKey=GameButtons}" Height="46" Margin="168,5"/>
-        <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.Column="0" Margin="160,5" HorizontalAlignment="Center" Width="320" >
-            <Button x:Name="_backBtn" Click="clickBackBtn" Content="Rules" Margin="0,0,5,0" Style="{StaticResource ResourceKey=GameButtons}" Width="150" Height="46"/>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center" Width="Auto" >
+            <Button x:Name="_backBtn" Click="clickBackBtn" Content="Rules" Margin="0,0,5,0" Style="{StaticResource ResourceKey=GameButtons}" Width="150" Height="56"/>
             <ToggleSwitch x:Name="_playerToggle" 
                           Margin="5,0,0,0" 
                           Background="{StaticResource ButtonBrush}"
                           BorderBrush="#FF35788A"
                           Foreground="#FF243B43"
-                          FontFamily="fantasy"
+                          FontFamily="antasy"
                           FontWeight="Bold"
                           BorderThickness="3"
-                          Width="150" Toggled="togglePlayerMode" OffContent="1P" OnContent="2P" HorizontalAlignment="Center" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" FontSize="20"/>
+                          Width="150" Toggled="togglePlayerMode" OffContent="1P" OnContent="2P" HorizontalAlignment="Center" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" FontSize="20" />
         </StackPanel>
         <TextBox x:Name="_player1Nickname" Grid.Row="2" TextWrapping="Wrap" Text="" Grid.Column="0" PlaceholderText="Player 1 Nickname:" Margin="5,2,5,0" TextAlignment="Center"/>
         <TextBox x:Name="_player2Nickname" Grid.Row="2" TextWrapping="Wrap" Text="" Grid.Column="1" PlaceholderText="Player 2 Nickname:" TextAlignment="Center" Margin="5,2,5,0"/>

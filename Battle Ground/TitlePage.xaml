@@ -22,9 +22,19 @@
             <Setter Property="FontFamily" Value="Fantasy"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        <Style x:Key="LabelText" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="SimSun"/>
+        </Style>
 
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/bg.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
@@ -34,8 +44,12 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Battle Ground" Grid.ColumnSpan="2" Margin="20,0,0,20" TextAlignment="Center" FontSize="40"/>
-        <TextBlock x:Name="_txtRules" Grid.Row="1" TextWrapping="Wrap" Text="{x:Bind Path=rules}" Grid.ColumnSpan="2" Margin="10,10,10,17" FontSize="30"/>
+        <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="#FF35788A">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Battle Ground" Margin="20,0,0,20" TextAlignment="Center" FontSize="40" Style="{StaticResource LabelText}" FontFamily="SimSun"/>
+        </Border>
+        <Border BorderThickness="5" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#FF35788A">
+            <TextBlock x:Name="_txtRules" Grid.Row="1" TextWrapping="Wrap" Text="{x:Bind Path=rules}" Margin="10,10,10,17" FontSize="30" FontFamily="SimSun"/>
+        </Border>
         <Button Name="_playBtn" Click="_playBtn_Click" Content="Select Characters" Grid.Row="2" Style="{StaticResource GameButtons}"  Grid.Column="1" Width="304"/>
         <Button x:Name="_scoreBoardBtn" Content="Scoreboard"  Grid.Row="2" Style="{StaticResource GameButtons}" Width="304" Height="39" Click="showScoreBoard"/>
 

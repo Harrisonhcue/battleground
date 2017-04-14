@@ -38,6 +38,7 @@ namespace Battle_Ground.Presentation
             // Initalize navigation context variable
             _game = null;
             this.InitializeComponent();
+            _btnReset.Visibility = Visibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -206,6 +207,7 @@ namespace Battle_Ground.Presentation
         public void UpdateLabels()
         {
             _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
+
             _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
         }
 
@@ -247,8 +249,11 @@ namespace Battle_Ground.Presentation
 
             else if (_game.Player1.Character.Health <= 0)
             {
+
+
                 winner = "Player 2";
                 EndGame(winner);
+
             }
 
             else if (_game.Player2.Character.Health <= 0)
@@ -272,17 +277,25 @@ namespace Battle_Ground.Presentation
                 _txtWinnerDisplay.Text = "Tie";
                 _game.Player1.Character.Health = 0;
                 _game.Player2.Character.Health = 0;
+                _btnReset.Visibility = Visibility.Visible;
             }
             else if (winner == "Player 1")
             {
                 _txtWinnerDisplay.Text = "Player 1 Wins";
                 _game.Player2.Character.Health = 0;
+                _btnReset.Visibility = Visibility.Visible;
             }
             else if (winner == "Player 2")
             {
                 _txtWinnerDisplay.Text = "Player 2 Wins";
                 _game.Player1.Character.Health = 0;
+                _btnReset.Visibility = Visibility.Visible;
             }
+        }
+
+        private void ResetGame(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainMenu));
         }
     }
 }
