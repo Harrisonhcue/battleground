@@ -27,7 +27,13 @@ namespace Battle_Ground
     /// </summary>
     public sealed partial class MainMenu : Page
     {
+        /// <summary>
+        /// The field variable game which will be used thorugh all page navigations
+        /// </summary>
         private Game _game;
+        /// <summary>
+        /// Default contructor for the main menu.xaml page 
+        /// </summary>
         public MainMenu()
         {
             this.InitializeComponent();
@@ -36,7 +42,9 @@ namespace Battle_Ground
             _player2Nickname.IsEnabled = false;
             _backBtn.Visibility = Visibility.Collapsed; ;
         }
-
+        /// <summary>
+        /// Method to show characters in the list view to the user
+        /// </summary>
         private void addCharactersToListViews()
         {
             foreach (Character character in _game.CharacterList)
@@ -47,7 +55,11 @@ namespace Battle_Ground
             }
         }
 
-
+        /// <summary>
+        /// Mehtod which enables the user to navigate back on clicking the back button if possible 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clickBackBtn(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -55,7 +67,11 @@ namespace Battle_Ground
                 Frame.GoBack();
             }
         }
-
+        /// <summary>
+        /// Method which is called when the user confirm selection of characters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void clickConfirmSelection(object sender, RoutedEventArgs e)
         {
             try
@@ -72,7 +88,11 @@ namespace Battle_Ground
             }
 
         }
-
+        /// <summary>
+        /// Toggles whic player mode is currently selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void togglePlayerMode(object sender, RoutedEventArgs e)
         {
             if (_playerToggle.IsOn == true)
@@ -83,7 +103,11 @@ namespace Battle_Ground
             }
 
         }
-
+        /// <summary>
+        /// Determines which character was selected and asssigns that to the player selecting
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void characterSelected(object sender, ItemClickEventArgs e)
         {
             Character selection = e.ClickedItem as Character;
@@ -101,7 +125,10 @@ namespace Battle_Ground
 
             }
         }
-
+        /// <summary>
+        /// Check to see if a nickname has been set by user or it defaults
+        /// </summary>
+        /// <returns>boolean </returns>
         private bool checkNickNameBoxes()
         {
             bool value;

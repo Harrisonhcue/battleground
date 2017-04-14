@@ -19,7 +19,7 @@ namespace Battle_Ground.Characters
         }
 
         // Sets the 4 attacks that the player can choose if they have chosen the character "Blue Lizard"
-        public override void Attack1 (Player _playerAttackingWithBlueLizard, Player _playerAttackedByBlueLIzard)
+        public override void Attack1(Player _playerAttackingWithBlueLizard, Player _playerAttackedByBlueLIzard)
         {
             Bite(_playerAttackingWithBlueLizard, _playerAttackedByBlueLIzard);
         }
