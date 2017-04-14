@@ -4,8 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
+using System.Xml;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -25,11 +29,21 @@ namespace Battle_Ground
     public sealed partial class TitlePage : Page
     {
 
-        private StreamReader scorefile;
+        //private StreamReader scorefile;
+        //Contains the list of rules for this game;
+        private string rules;
+
         public TitlePage()
         {
             this.InitializeComponent();
+            loadRules();
 
+        }
+
+        private void loadRules()
+        {
+            rules = $"The rules of this game are as follows\n 1.)Each Player selectes a character\n ";
+            rules.ToUpper();
         }
 
         private void _playBtn_Click(object sender, RoutedEventArgs e)

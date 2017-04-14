@@ -12,7 +12,7 @@ namespace Battle_Ground.Characters
         public BlueLizard()
         {
             // Sets unique values for the character name, image source, attack, and health.
-            _charName = "Blue Lizard";
+            _charName = "BlueLizard";
             _charImageSource = "ms-appx:///Assets/BlueLizard.png";
             _attk = 8;
             _health = 120;
