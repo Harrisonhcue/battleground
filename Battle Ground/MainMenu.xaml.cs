@@ -2,6 +2,7 @@
 using Battle_Ground.Presentation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -31,6 +32,7 @@ namespace Battle_Ground
         /// The field variable game which will be used thorugh all page navigations
         /// </summary>
         private Game _game;
+        private static Random _randomizer;
         /// <summary>
         /// Default contructor for the main menu.xaml page 
         /// </summary>
@@ -41,17 +43,21 @@ namespace Battle_Ground
             addCharactersToListViews();
             _player2Nickname.IsEnabled = false;
             _backBtn.Visibility = Visibility.Collapsed; ;
+            _randomizer = new Random();
         }
         /// <summary>
         /// Method to show characters in the list view to the user
         /// </summary>
         private void addCharactersToListViews()
         {
-            foreach (Character character in _game.CharacterList)
+            foreach (Character character in _game.CharacterList1)
             {
                 _charListView.Items.Add(character);
-                _charListView2.Items.Add(character);
 
+            }
+            foreach (Character character in _game.CharacterList2)
+            {
+                _charListView2.Items.Add(character);
             }
         }
 
@@ -111,39 +117,21 @@ namespace Battle_Ground
         private void characterSelected(object sender, ItemClickEventArgs e)
         {
             Character selection = e.ClickedItem as Character;
-            Character player1Selection = new Character();
-            Character player2Selection = new Character();
+            Character playerSelection = new Character();
+
 
             if (sender == _charListView)
             {
                 _game.Player1 = new Player();
+                _game.Player1.Character = selection;
 
-                if (selection.CharName == "Blue Lizard")
-                {
-                    player1Selection = new BlueLizard();
-                }
-                else if (selection.CharName == "Adventurer")
-                {
-                    player1Selection = new BlueLizard();
-                }
 
-                _game.Player1.Character = player1Selection;
             }
 
             else if (sender == _charListView2)
             {
                 _game.Player2 = new Player();
-
-                if (selection.CharName == "Blue Lizard")
-                {
-                    player2Selection = new BlueLizard();
-                }
-                else if (selection.CharName == "Adventurer")
-                {
-                    player2Selection = new Adventurer();
-                }
-
-                _game.Player2.Character = player2Selection;
+                _game.Player2.Character = selection;
             }
         }
         /// <summary>
@@ -182,6 +170,32 @@ namespace Battle_Ground
                 value = true;
             }
             return value;
+        }
+
+        private void onClickRandomChar(object sender, RoutedEventArgs e)
+        {
+            //Random character chosen from current characters contained by the game object
+
+
+
+            if (sender == _btnRandomP1)
+            {
+
+                //Assigns the random character if player 1 randomizes 
+                _game.Player1 = new Player();
+
+                _game.Player1.Character = _game.CharacterList1[_randomizer.Next(_game.CharacterList1.Count)];
+                _charListView.SelectedItem = _game.Player1.Character;
+
+            }
+            else if (sender == _btnRandomP2)
+            {
+                //Assigns the random character if player 2 randomizes 
+                _game.Player2 = new Player();
+                _game.Player2.Character = _game.CharacterList2[_randomizer.Next(_game.CharacterList2.Count)];
+                _charListView2.SelectedItem = _game.Player2.Character;
+            }
+
         }
 
     }

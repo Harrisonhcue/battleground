@@ -12,12 +12,15 @@ namespace Battle_Ground
     {
         private Player _player1;
         private Player _player2;
-        private List<Character> _characterList;
+        private List<Character> _characterList1;
+        private List<Character> _characterList2;
+
         public Game()
         {
             _player1 = null;
             _player2 = null;
-            setCharacterList();
+            setCharacterList1();
+            setCharacterList2();
         }
 
         public Player Player1
@@ -46,26 +49,47 @@ namespace Battle_Ground
             }
         }
 
-        internal List<Character> CharacterList
+        internal List<Character> CharacterList1
         {
             get
             {
 
-                return _characterList;
+                return _characterList1;
+
+            }
+
+
+        }
+        internal List<Character> CharacterList2
+        {
+            get
+            {
+
+                return _characterList1;
 
             }
 
 
         }
 
-        private void setCharacterList()
+        private void setCharacterList1()
         {
-            _characterList = new List<Character>();
+            _characterList1 = new List<Character>();
             Character char1 = new BlueLizard();
             Character char2 = new Adventurer();
-            _characterList.Add(char1);
-            _characterList.Add(char2);
+            //Character cha3 = new;
+            _characterList1.Add(char1);
+            _characterList1.Add(char2);
 
+        }
+        private void setCharacterList2()
+        {
+            _characterList2 = new List<Character>();
+            Character char1 = new BlueLizard();
+            Character char2 = new Adventurer();
+            //Character cha3 = new;
+            _characterList2.Add(char1);
+            _characterList2.Add(char2);
         }
 
 

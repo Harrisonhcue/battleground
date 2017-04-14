@@ -72,7 +72,7 @@ namespace Battle_Ground.Presentation
         /// <param name="buttonState">Determines whether the buttons will be disabled or enabled</param>
         public void ChangeButtonState(int playerNum, bool buttonState)
         {
-           if (playerNum == 1)
+            if (playerNum == 1)
             {
                 _btnPlayer1Attack1.IsEnabled = buttonState;
                 _btnPlayer1Attack2.IsEnabled = buttonState;
@@ -114,7 +114,7 @@ namespace Battle_Ground.Presentation
             // If both players have chosen an attack, call method that executes each player's attack chosen.
             if (_player1AttackChosen == true & _player2AttackChosen == true)
             {
-               switch(_player1AttackNum)
+                switch (_player1AttackNum)
                 {
                     case 1:
                         _game.Player1.Character.Attack1(_game.Player1, _game.Player2);
@@ -188,7 +188,7 @@ namespace Battle_Ground.Presentation
                 // Updates the health of the characters
                 UpdateLabels();
             }
-            
+
             if (sender == _btnPlayer2Attack1 || sender == _btnPlayer2Attack2 || sender == _btnPlayer2Attack3 || sender == _btnPlayer2Attack4)
             {
                 // Determines which attack the player has chosen. Call method that waits until both characters have chosen an attack and then executes both at the same time.
