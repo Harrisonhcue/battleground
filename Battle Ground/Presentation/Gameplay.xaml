@@ -6,48 +6,66 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <LinearGradientBrush x:Key="ButtonBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF272623" Offset="0.01"/>
+            <GradientStop Color="#FFDA462F" Offset="0.1"/>
+        </LinearGradientBrush>
+        <Style x:Key="GameButtons" TargetType="ButtonBase">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Background" Value="{StaticResource ButtonBrush}"/>
+            <Setter Property="BorderBrush" Value="#FF35788A"/>
+            <Setter Property="Foreground" Value="#FF243B43"/>
+            <Setter Property="FontFamily" Value="Fantasy"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
+    <Grid x:Name="Page">
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/bg3.jpg"></ImageBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="73*"/>
-            <RowDefinition Height="420*"/>
-            <RowDefinition Height="45*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="419*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="183*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Margin="90,19,90,20" Grid.Row="3">
-            <Grid>
-                <Button x:Name="_btnPlayer1Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer1Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer1Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer1Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
 
-            </Grid>
-        </Border>
-        <Border Margin="90,19,90,20" Grid.Row="3" Grid.Column="1">
-            <Grid>
-                <Button x:Name="_btnPlayer2Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" Margin="0,1,0,0" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer2Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer2Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
-                <Button x:Name="_btnPlayer2Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen"/>
+        <RelativePanel Grid.Row="3">
+            <Button x:Name="_btnPlayer1Attack1" Content="Attack 1"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignLeftWithPanel="True" />
+            <Button x:Name="_btnPlayer1Attack2" Content="Attack 2"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="0,0,20,0"/>
+            <Button x:Name="_btnPlayer1Attack3" Content="Attack 3"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
+            <Button x:Name="_btnPlayer1Attack4" Content="Attack 4"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Margin="0,0,20,0"/>
+        </RelativePanel>
 
-            </Grid>
-        </Border>
+
+        <RelativePanel Grid.Row="3" Grid.Column="1">
+            <Button x:Name="_btnPlayer2Attack1" Content="Attack 1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="20,0,0,0"/>
+            <Button x:Name="_btnPlayer2Attack2" Content="Attack 2" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+            <Button x:Name="_btnPlayer2Attack3" Content="Attack 3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Margin="20,0,0,0"/>
+            <Button x:Name="_btnPlayer2Attack4" Content="Attack 4" HorizontalAlignment="Right" Height="55" VerticalAlignment="Bottom" Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
+
+        </RelativePanel>
+
         <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Text="Player 1 Information"/>
         <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="Player 2 Information"/>
-        <StackPanel Margin="192,21,191,16" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Height="382">
             <TextBlock x:Name="_txtChar1Health" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Player 1 Health" VerticalAlignment="Top"/>
-
             <Image x:Name="_imgChar1" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0" Source="ms-appx:///Assets/Adventurer.png"/>
         </StackPanel>
         <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left">
             <TextBlock x:Name="_txtPlayer1Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 1 Name" VerticalAlignment="Top"/>
             <TextBlock x:Name="_txtChar1Name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Character 1 Name" VerticalAlignment="Top"/>
         </StackPanel>
-        <StackPanel Margin="192,21,191,16" Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="382">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Height="382">
             <TextBlock x:Name="_txtChar2Health" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Player 2 Health" VerticalAlignment="Top"/>
 
             <Image x:Name="_imgChar2" HorizontalAlignment="Center" Height="326" VerticalAlignment="Bottom" Width="257" Margin="0,20,0,0" Source="ms-appx:///Assets/Adventurer.png" RenderTransformOrigin="0.5,0.5">

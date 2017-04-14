@@ -36,6 +36,7 @@ namespace Battle_Ground.Presentation
             // Initalize navigation context variable
             _game = null;
             this.InitializeComponent();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -48,8 +49,8 @@ namespace Battle_Ground.Presentation
             _txtPlayer2Name.Text = _game.Player2.Nickname;
             _txtChar1Name.Text = _game.Player1.Character.CharName;
             _txtChar2Name.Text = _game.Player2.Character.CharName;
-            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
-            _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+            _txtChar1Health.Text = $"Health: {_game.Player1.Character.Health.ToString()}";
+            _txtChar2Health.Text = $"Health: {_game.Player2.Character.Health.ToString()}";
 
             // Set character images based on character type sources
             _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
@@ -61,8 +62,8 @@ namespace Battle_Ground.Presentation
         /// </summary>
         public void UpdateLabels()
         {
-            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
-            _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+            _txtChar1Health.Text = $"Health: {_game.Player1.Character.Health.ToString()}";
+            _txtChar2Health.Text = $"Health:{_game.Player2.Character.Health.ToString()}";
         }
 
         /// <summary>
