@@ -53,11 +53,21 @@ namespace Battle_Ground.Presentation
             _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
             _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
 
+            // Changes the name of the attack buttons based on which character is chosen
+            _btnPlayer1Attack1.Content = _game.Player1.Character.Attack1Name;
+            _btnPlayer1Attack2.Content = _game.Player1.Character.Attack2Name;
+            _btnPlayer1Attack3.Content = _game.Player1.Character.Attack3Name;
+            _btnPlayer1Attack4.Content = _game.Player1.Character.Attack4Name;
+            _btnPlayer2Attack1.Content = _game.Player2.Character.Attack1Name;
+            _btnPlayer2Attack2.Content = _game.Player2.Character.Attack2Name;
+            _btnPlayer2Attack3.Content = _game.Player2.Character.Attack3Name;
+            _btnPlayer2Attack4.Content = _game.Player2.Character.Attack4Name;
+
             // Set character images based on character type sources
             _imgChar1.Source = new BitmapImage(new Uri(_game.Player1.Character.CharImageSource));
             _imgChar2.Source = new BitmapImage(new Uri(_game.Player2.Character.CharImageSource));
 
-            // If player 2 is a PC, provide a random attack.
+            // If player 2 is a PC, produce a random attack.
             if (_game.IsHuman == false)
             {
                 BattleState(2, _randNum.Next(1, 5));
@@ -92,9 +102,6 @@ namespace Battle_Ground.Presentation
                 {
                     BattleState(1, 4);
                 }
-
-                // Updates the health of the characters
-                UpdateLabels();
             }
 
             if (sender == _btnPlayer2Attack1 || sender == _btnPlayer2Attack2 || sender == _btnPlayer2Attack3 || sender == _btnPlayer2Attack4)
@@ -117,9 +124,6 @@ namespace Battle_Ground.Presentation
                 {
                     BattleState(2, 4);
                 }
-
-                // Updates the health of the characters
-                UpdateLabels();
             }
         }
 
@@ -185,8 +189,10 @@ namespace Battle_Ground.Presentation
                 _player1AttackChosen = false;
                 _player2AttackChosen = false;
 
-                // Reenables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
+                // Re-enables both player's attack buttons after they have both chosen an attack and their attacks have been executed.
                 ChangeButtonState(1, true);
+
+                // If player 2 is a PC, produce a random attack.
                 if (_game.IsHuman == false)
                 {
                     BattleState(2, _randNum.Next(1, 5));
@@ -196,17 +202,62 @@ namespace Battle_Ground.Presentation
                     ChangeButtonState(2, true);
                 }
 
+                // Calls a method that checks if either character's health is below 0.
                 CheckWin();
+
+                // Updates the health of the characters and which attacks they chose
+                UpdateLabels();
             }
         }
 
         /// <summary>
-        /// Displays the updated health of each character.
+        /// Displays the updated health of each character as well as which attack they chose and how much damage it dealt.
         /// </summary>
         public void UpdateLabels()
         {
             _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
             _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+            _txtPlayer1InfoDisplay.Text = $"{_game.Player1.Character.CharName} dealt {_game.Player1.Character.DamageDealt} damge with {AttackNameToString(1)}";
+            _txtPlayer2InfoDisplay.Text = $"{_game.Player2.Character.CharName} dealt {_game.Player2.Character.DamageDealt} damge with {AttackNameToString(2)}";
+        }
+
+        /// <summary>
+        /// converts the attack num of a character to a string
+        /// </summary>
+        /// <param name="playerNum">A player</param>
+        /// <returns>String with the attack the player's character used</returns>
+        public string AttackNameToString(int playerNum)
+        {
+            if (playerNum == 1)
+            {
+                switch(_player1AttackNum)
+                {
+                    case 1:
+                        return _game.Player1.Character.Attack1Name;
+                    case 2:
+                        return _game.Player1.Character.Attack2Name;
+                    case 3:
+                        return _game.Player1.Character.Attack3Name;
+                    case 4:
+                        return _game.Player1.Character.Attack4Name;
+                }
+            }
+            else if (playerNum == 2)
+            {
+                switch (_player2AttackNum)
+                {
+                    case 1:
+                        return _game.Player2.Character.Attack1Name;
+                    case 2:
+                        return _game.Player2.Character.Attack2Name;
+                    case 3:
+                        return _game.Player2.Character.Attack3Name;
+                    case 4:
+                        return _game.Player2.Character.Attack4Name;
+                }
+            }
+                Debug.Assert(false, "Invalid attack number or player number given");
+                return "";
         }
 
         /// <summary>

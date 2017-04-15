@@ -25,9 +25,6 @@
         </Style>
     </Page.Resources>
     <Grid x:Name="Page">
-        <Grid.Background>
-            <ImageBrush ImageSource="ms-appx:///Assets/bg3.jpg"></ImageBrush>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="419*"/>
@@ -67,7 +64,6 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Height="382">
             <TextBlock x:Name="_txtChar2Health" Margin="0" TextWrapping="Wrap" Text="Player 2 Health" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-
             <Image x:Name="_imgChar2" Height="360" Margin="0" Source="ms-appx:///Assets/Adventurer.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="300">
                 <Image.RenderTransform>
                     <CompositeTransform ScaleX="-1"/>
