@@ -178,9 +178,6 @@ namespace Battle_Ground
         private void onClickRandomChar(object sender, RoutedEventArgs e)
         {
             //Random character chosen from current characters contained by the game object
-
-
-
             if (sender == _btnRandomP1)
             {
 

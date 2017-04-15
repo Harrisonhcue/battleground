@@ -123,11 +123,11 @@
     <None Include="Battle Ground_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Adventurer.png" />
     <Content Include="Assets\bg.jpg" />
     <Content Include="Assets\bg2.png" />
     <Content Include="Assets\bg3.jpg" />
     <Content Include="Assets\BlueLizard.png" />
+    <Content Include="Assets\Adventurer.png" />
     <Content Include="Assets\Hoo.png" />
     <Content Include="Assets\RedSeal.png" />
     <Content Include="Assets\Peebs.png" />
@@ -140,7 +140,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Skeleton Knight.png" />
+    <Content Include="Assets\Skeleton Knight.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
