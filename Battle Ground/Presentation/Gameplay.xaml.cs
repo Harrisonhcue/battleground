@@ -60,7 +60,7 @@ namespace Battle_Ground.Presentation
         {
             // Provide information to context variable
             _game = e.Parameter as Game;
-
+            _btnReset.Visibility = Visibility.Collapsed;
             // Display text of chosen nicknames and character names
             _txtPlayer1Name.Text = _game.Player1.Nickname;
             _txtPlayer2Name.Text = _game.Player2.Nickname;
@@ -225,7 +225,7 @@ namespace Battle_Ground.Presentation
 
                 // Updates the health of the characters and which attacks they chose
                 UpdateLabels();
-                
+
             }
         }
 
@@ -233,11 +233,32 @@ namespace Battle_Ground.Presentation
         /// Displays the updated health of each character as well as which attack they chose and how much damage it dealt.
         /// </summary>
         public void UpdateLabels()
+
         {
-            _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
-            _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+            if (_game.Player1.Character.Health <= 0)
+            {
+                _txtChar1Health.Text = "0";
+            }
+            else
+            {
+                _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
+            }
+            if (_game.Player2.Character.Health <= 0)
+            {
+                _txtChar2Health.Text = "0";
+            }
+            else
+            {
+                _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
+            }
+
+
+
+
+
             _txtPlayer1InfoDisplay.Text = $"{_game.Player1.Character.CharName} dealt {_game.Player1.Character.DamageDealt} damage with {AttackNameToString(1)}";
             _txtPlayer2InfoDisplay.Text = $"{_game.Player2.Character.CharName} dealt {_game.Player2.Character.DamageDealt} damage with {AttackNameToString(2)}";
+
         }
 
         /// <summary>
@@ -249,7 +270,7 @@ namespace Battle_Ground.Presentation
         {
             if (playerNum == 1)
             {
-                switch(_player1AttackNum)
+                switch (_player1AttackNum)
                 {
                     case 1:
                         return _game.Player1.Character.Attack1Name;
@@ -275,8 +296,8 @@ namespace Battle_Ground.Presentation
                         return _game.Player2.Character.Attack4Name;
                 }
             }
-                Debug.Assert(false, "Invalid attack number or player number given");
-                return "";
+            Debug.Assert(false, "Invalid attack number or player number given");
+            return "";
         }
 
         /// <summary>
@@ -317,27 +338,29 @@ namespace Battle_Ground.Presentation
 
                 if (_game.Player1.Character.Health <= 0 & _game.Player2.Character.Health <= 0)
                 {
-                    _game.Player1.Character.Health = 0;
-                    _game.Player2.Character.Health = 0;
+
                     _txtWinnerDisplay.Text = "Tie";
                     winner = "Tie";
                     Save(winner);
+                    _btnReset.Visibility = Visibility.Visible;
                 }
 
                 else if (_game.Player1.Character.Health <= 0)
                 {
-                    _game.Player1.Character.Health = 0;
+
                     _txtWinnerDisplay.Text = "Player 2 Wins";
                     winner = _game.Player1.Nickname;
                     Save(winner);
+                    _btnReset.Visibility = Visibility.Visible;
                 }
 
                 else if (_game.Player2.Character.Health <= 0)
                 {
-                    _game.Player2.Character.Health = 0;
+
                     _txtWinnerDisplay.Text = "Player 1 Wins";
                     winner = _game.Player1.Nickname;
                     Save(winner);
+                    _btnReset.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -345,29 +368,34 @@ namespace Battle_Ground.Presentation
         // Obtains the number of previous battle logs that have been created and creates a file path to a new one.
         public void LoadNumSaves()
         {
-            using (StreamReader reader = new StreamReader(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Open)))
-            {
-                _numSaves = int.Parse(reader.ReadLine());
-                // Create a filepath where the data will be saved
-                _filePathBattleLogs = $"{_dataDirPath}/Battle Log {_numSaves}.dat";
-            }
+            /* using (StreamReader reader = new StreamReader(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Open)))
+             {
+                 _numSaves = int.Parse(reader.ReadLine());
+                 // Create a filepath where the data will be saved
+                 _filePathBattleLogs = $"{_dataDirPath}/Battle Log {_numSaves}.dat";
+             }*/
         }
 
         // Saves the game informaiton to a file
         public void Save(string winner)
         {
-            // Create a file stream with a stream reader to update the number of BattleLog files. Overwrites previous file.
-            using (StreamWriter writer = new StreamWriter(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Create)))
-            {
-                writer.WriteLine(_numSaves += 1);
-            }
+            /* // Create a file stream with a stream reader to update the number of BattleLog files. Overwrites previous file.
+             using (StreamWriter writer = new StreamWriter(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Create)))
+             {
+                 writer.WriteLine(_numSaves += 1);
+             }
 
-            // Create a file stream with a stream reader to store data into the file
-            using (StreamWriter writer = new StreamWriter(new FileStream(_filePathBattleLogs, FileMode.Create)))
-            {
-                _numSaves += 1;
-                _game.Save(writer, winner);
-            }
+             // Create a file stream with a stream reader to store data into the file
+             using (StreamWriter writer = new StreamWriter(new FileStream(_filePathBattleLogs, FileMode.Create)))
+             {
+                 _numSaves += 1;
+                 _game.Save(writer, winner);
+             }*/
+        }
+
+        private void ResetGame(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainMenu), _game = new Game());
         }
     }
 }
