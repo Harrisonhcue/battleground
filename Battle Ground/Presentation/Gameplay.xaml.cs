@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,12 +33,27 @@ namespace Battle_Ground.Presentation
         private int _player1AttackNum = 0;
         private int _player2AttackNum = 0;
         private Random _randNum = new Random();
+        private string _dataDirPath;
+        private string _filePathBattleLogs;
+        private int _numSaves;
+        private int _turnNum = 0;
 
         public Gameplay()
         {
             // Initalize navigation context variable
             _game = null;
             this.InitializeComponent();
+
+            // Create the path necessary to save the files in the the appropriate folder
+            _dataDirPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "ResultsData", "BattleLogs");
+
+            //Check if directory exists and create it if not
+            if (Directory.Exists(_dataDirPath) == false)
+            {
+                Directory.CreateDirectory(_dataDirPath);
+            }
+
+            LoadNumSaves();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -134,6 +150,8 @@ namespace Battle_Ground.Presentation
         /// <param name="attackNum"></param>
         public void BattleState(int playerNum, int attackNum)
         {
+            _turnNum += 1;
+
             // Provides information to local variables based on which player has chosen their attack. Disables attack buttons for player that has chosen an attack.
             if (playerNum == 1)
             {
@@ -207,6 +225,7 @@ namespace Battle_Ground.Presentation
 
                 // Updates the health of the characters and which attacks they chose
                 UpdateLabels();
+                
             }
         }
 
@@ -217,8 +236,8 @@ namespace Battle_Ground.Presentation
         {
             _txtChar1Health.Text = _game.Player1.Character.Health.ToString();
             _txtChar2Health.Text = _game.Player2.Character.Health.ToString();
-            _txtPlayer1InfoDisplay.Text = $"{_game.Player1.Character.CharName} dealt {_game.Player1.Character.DamageDealt} damge with {AttackNameToString(1)}";
-            _txtPlayer2InfoDisplay.Text = $"{_game.Player2.Character.CharName} dealt {_game.Player2.Character.DamageDealt} damge with {AttackNameToString(2)}";
+            _txtPlayer1InfoDisplay.Text = $"{_game.Player1.Character.CharName} dealt {_game.Player1.Character.DamageDealt} damage with {AttackNameToString(1)}";
+            _txtPlayer2InfoDisplay.Text = $"{_game.Player2.Character.CharName} dealt {_game.Player2.Character.DamageDealt} damage with {AttackNameToString(2)}";
         }
 
         /// <summary>
@@ -289,50 +308,65 @@ namespace Battle_Ground.Presentation
         /// <returns></returns>
         public void CheckWin()
         {
-            string winner = "";
-            if (_game.Player1.Character.Health <= 0 & _game.Player2.Character.Health <= 0)
-            {
-                winner = "Tie";
-                EndGame(winner);
-            }
+            string winner;
 
-            else if (_game.Player1.Character.Health <= 0)
+            if (_game.Player1.Character.Health <= 0 || _game.Player2.Character.Health <= 0)
             {
-                winner = "Player 2";
-                EndGame(winner);
-            }
+                ChangeButtonState(1, false);
+                ChangeButtonState(2, false);
 
-            else if (_game.Player2.Character.Health <= 0)
-            {
-                winner = "Player 1";
-                EndGame(winner);
+                if (_game.Player1.Character.Health <= 0 & _game.Player2.Character.Health <= 0)
+                {
+                    _game.Player1.Character.Health = 0;
+                    _game.Player2.Character.Health = 0;
+                    _txtWinnerDisplay.Text = "Tie";
+                    winner = "Tie";
+                    Save(winner);
+                }
+
+                else if (_game.Player1.Character.Health <= 0)
+                {
+                    _game.Player1.Character.Health = 0;
+                    _txtWinnerDisplay.Text = "Player 2 Wins";
+                    winner = _game.Player1.Nickname;
+                    Save(winner);
+                }
+
+                else if (_game.Player2.Character.Health <= 0)
+                {
+                    _game.Player2.Character.Health = 0;
+                    _txtWinnerDisplay.Text = "Player 1 Wins";
+                    winner = _game.Player1.Nickname;
+                    Save(winner);
+                }
             }
         }
 
-        /// <summary>
-        /// Ends the game. Disables attack buttons, and displays the winner.
-        /// </summary>
-        /// <param name="winner">String that contains the winner of the game</param>
-        public void EndGame(string winner)
+        // Obtains the number of previous battle logs that have been created and creates a file path to a new one.
+        public void LoadNumSaves()
         {
-            ChangeButtonState(1, false);
-            ChangeButtonState(2, false);
+            using (StreamReader reader = new StreamReader(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Open)))
+            {
+                _numSaves = int.Parse(reader.ReadLine());
+                // Create a filepath where the data will be saved
+                _filePathBattleLogs = $"{_dataDirPath}/Battle Log {_numSaves}.dat";
+            }
+        }
 
-            if (winner == "Tie")
+        // Saves the game informaiton to a file
+        public void Save(string winner)
+        {
+            // Create a file stream with a stream reader to update the number of BattleLog files. Overwrites previous file.
+            using (StreamWriter writer = new StreamWriter(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Create)))
             {
-                _txtWinnerDisplay.Text = "Tie";
-                _game.Player1.Character.Health = 0;
-                _game.Player2.Character.Health = 0;
+                writer.WriteLine(_numSaves += 1);
             }
-            else if (winner == "Player 1")
+
+            // Create a file stream with a stream reader to store data into the file
+            using (StreamWriter writer = new StreamWriter(new FileStream(_filePathBattleLogs, FileMode.Create)))
             {
-                _txtWinnerDisplay.Text = "Player 1 Wins";
-                _game.Player2.Character.Health = 0;
-            }
-            else if (winner == "Player 2")
-            {
-                _txtWinnerDisplay.Text = "Player 2 Wins";
-                _game.Player1.Character.Health = 0;
+                _numSaves += 1;
+                _game.Save(writer, winner);
             }
         }
     }

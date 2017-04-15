@@ -52,8 +52,8 @@
 
         </RelativePanel>
 
-        <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Text="Player 1 Information"/>
-        <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,9,0,8" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="Player 2 Information"/>
+        <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" TextWrapping="Wrap" Grid.Row="2" Text="Player 1 Information"/>
+        <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="20,0,0,0" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="Player 2 Information" VerticalAlignment="Bottom"/>
         <StackPanel Orientation="Vertical" Grid.Row="1" Height="382">
             <TextBlock x:Name="_txtChar1Health" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Player 1 Health" VerticalAlignment="Top"/>
             <Image x:Name="_imgChar1" HorizontalAlignment="Center" Height="360" Margin="0" Source="ms-appx:///Assets/Mage.png" Width="300"/>

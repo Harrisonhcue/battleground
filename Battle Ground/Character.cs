@@ -110,23 +110,23 @@ namespace Battle_Ground
         // Special attacks
         public void Fireball(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 20);
+            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 17);
             _playerAttacked.Character._health -= _dmg;
         }
         
         public void WaterCannon(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 18);
+            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 16);
             _playerAttacked.Character._health -= _dmg;
         }
         public void Thunder(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 17);
+            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 15);
             _playerAttacked.Character._health -= _dmg;
         }
         public void Void(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 16);
+            _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 14);
             _playerAttacked.Character._health -= _dmg;
         }
 
