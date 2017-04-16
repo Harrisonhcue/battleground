@@ -67,10 +67,7 @@ namespace Battle_Ground
         /// <param name="e"></param>
         private void clickBackBtn(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            Frame.Navigate(typeof(TitlePage));
         }
         /// <summary>
         /// Method which is called when the user confirm selection of characters
