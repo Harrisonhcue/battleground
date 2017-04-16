@@ -11,14 +11,16 @@ namespace Battle_Ground.Characters
     {
         public Adventurer()
         {
-            // Sets unique values for the character name, image source, attack, and health.
+            // Sets unique values for the character name, image source, attack, special attack, defense, special defense, and health of this character type.
             _charName = "Adventurer";
             _charImageSource = "ms-appx:///Assets/Adventurer.png";
-            _attk = 10;
-            _spAttack = 10;
+            _attk = 15;
+            _spAttack = 8;
             _defense = 10;
             _spDefense = 10;
             _health = 100;
+
+            // Sets the name of the attacks that this character type has access to.
             _attk1Name = "Stab";
             _attk2Name = "Slash";
             _attk3Name = "Fireball";

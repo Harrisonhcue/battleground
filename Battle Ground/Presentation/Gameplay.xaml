@@ -38,7 +38,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="_btnReset" Content="Reset Game"  Height="55"  Width="173" Click="ResetGame" Style="{StaticResource GameButtons}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,100,0,0"/>
+        <Button x:Name="_btnReset" Content="Reset Game"  Width="Auto" Click="ResetGame" Style="{StaticResource GameButtons}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,120,0,0"/>
         <RelativePanel Grid.Row="3">
             <Button x:Name="_btnPlayer1Attack1" Content="Attack 1"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignLeftWithPanel="True" />
             <Button x:Name="_btnPlayer1Attack2" Content="Attack 2"  Height="55"  Width="173" Click="OnAttackChosen" Style="{StaticResource GameButtons}" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="0,0,20,0"/>
@@ -72,15 +72,7 @@
             </TextBlock.Foreground>
         </TextBlock>
         <StackPanel Orientation="Vertical" Grid.Row="1" Height="382">
-            <Border BorderThickness="5">
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="#FFB93939" Offset="0.687"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <TextBlock  x:Name="_txtChar1Health" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Player 1 Health" VerticalAlignment="Top" FontSize="25"/>
-            </Border>
+            <ProgressBar x:Name="_uiPlayer1HealthBar" Height="35" VerticalAlignment="Stretch" Foreground="#FF46B61D" Margin="5,0"/>
             <Image x:Name="_imgChar1" HorizontalAlignment="Center" Height="360" Margin="0" Source="ms-appx:///Assets/Mage.png" Width="300"/>
         </StackPanel>
         <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left">
@@ -100,15 +92,7 @@
                 </TextBlock.Foreground></TextBlock>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Height="382">
-            <Border BorderThickness="5" >
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="#FFB93939" Offset="0.687"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <TextBlock x:Name="_txtChar2Health" Margin="0" TextWrapping="Wrap" Text="Player 2 Health" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="25"/>
-            </Border>
+            <ProgressBar x:Name="_uiPlayer2HealthBar" Height="35" VerticalAlignment="Stretch" Foreground="#FF46B61D" Margin="5,0,11,0"/>
             <Image x:Name="_imgChar2" Height="360" Margin="0" Source="ms-appx:///Assets/Adventurer.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="300">
                 <Image.RenderTransform>
                     <CompositeTransform ScaleX="-1"/>

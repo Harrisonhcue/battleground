@@ -10,7 +10,7 @@ namespace Battle_Ground.Characters
     {
         public RedSeal()
         {
-            // Sets unique values for the character name, image source, attack, and health.
+            // Sets unique values for the character name, image source, attack, special attack, defense, special defense, and health of this character type.
             _charName = "Red Seal";
             _charImageSource = "ms-appx:///Assets/RedSeal.png";
             _attk = 15;
@@ -18,6 +18,8 @@ namespace Battle_Ground.Characters
             _defense = 20;
             _spDefense = 10;
             _health = 120;
+
+            // Sets the name of the attacks that this character type has access to.
             _attk1Name = "Bite";
             _attk2Name = "Thrash";
             _attk3Name = "Water Cannon";

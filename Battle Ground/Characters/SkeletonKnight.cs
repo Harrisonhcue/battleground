@@ -10,14 +10,16 @@ namespace Battle_Ground.Characters
     {
         public SkeletonKnight()
         {
-            // Sets unique values for the character name, image source, attack, and health.
+            // Sets unique values for the character name, image source, attack, special attack, defense, special defense, and health of this character type.
             _charName = "Skeleton Knight";
             _charImageSource = "ms-appx:///Assets/SkeletonKnight.png";
             _attk = 20;
-            _spAttack = 8;
+            _spAttack = 5;
             _defense = 8;
             _spDefense = 12;
             _health = 80;
+
+            // Sets the name of the attacks that this character type has access to.
             _attk1Name = "Stab";
             _attk2Name = "Slash";
             _attk3Name = "Void";

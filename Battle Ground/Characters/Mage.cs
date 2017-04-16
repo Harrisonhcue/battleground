@@ -10,7 +10,7 @@ namespace Battle_Ground.Characters
     {
         public Mage()
         {
-            // Sets unique values for the character name, image source, attack, and health.
+            // Sets unique values for the character name, image source, attack, special attack, defense, special defense, and health of this character type.
             _charName = "Mage";
             _charImageSource = "ms-appx:///Assets/Mage.png";
             _attk = 5;
@@ -18,6 +18,8 @@ namespace Battle_Ground.Characters
             _defense = 10;
             _spDefense = 25;
             _health = 60;
+
+            // Sets the name of the attacks that this character type has access to.
             _attk1Name = "Fireball";
             _attk2Name = "Water Cannon";
             _attk3Name = "Thunder";

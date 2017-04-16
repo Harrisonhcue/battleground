@@ -11,14 +11,16 @@ namespace Battle_Ground.Characters
     {
         public BlueLizard()
         {
-            // Sets unique values for the character name, image source, attack, and health.
-            _charName = "BlueLizard";
+            // Sets unique values for the character name, image source, attack, special attack, defense, special defense, and health of this character type.
+            _charName = "Blue Lizard";
             _charImageSource = "ms-appx:///Assets/BlueLizard.png";
-            _attk = 9;
-            _spAttack = 5;
-            _defense = 15;
-            _spDefense = 5;
+            _attk = 5;
+            _spAttack = 8;
+            _defense = 20;
+            _spDefense = 10;
             _health = 150;
+
+            // Sets the name of the attacks that this character type has access to.
             _attk1Name = "Bite";
             _attk2Name = "Stomp";
             _attk3Name = "Fireball";
