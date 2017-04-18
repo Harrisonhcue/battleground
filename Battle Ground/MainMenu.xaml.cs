@@ -95,13 +95,16 @@ namespace Battle_Ground
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void togglePlayerMode(object sender, RoutedEventArgs e)
+        private void togglePlayerMode(object sender, RoutedEventArgs e)
         {
             if (_playerToggle.IsOn == true)
             {
                 _player2Nickname.IsEnabled = true;
-                MessageDialog modeSelected = new MessageDialog("2 Player Mode Selected ", "Player Mode");
-                await modeSelected.ShowAsync();
+
+            }
+            else if (_playerToggle.IsOn == false)
+            {
+                _player2Nickname.IsEnabled = false;
             }
 
         }

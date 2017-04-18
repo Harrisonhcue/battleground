@@ -445,18 +445,18 @@ namespace Battle_Ground.Presentation
         // Saves the game informaiton to a file
         public void Save(string winner)
         {
-             // Create a file stream with a stream reader to update the number of BattleLog files. Overwrites previous file.
-             using (StreamWriter writer = new StreamWriter(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Create)))
-             {
-                 writer.WriteLine(_numSaves += 1);
-             }
+            // Create a file stream with a stream reader to update the number of BattleLog files. Overwrites previous file.
+            using (StreamWriter writer = new StreamWriter(new FileStream($"{_dataDirPath}/NumSaves.dat", FileMode.Create)))
+            {
+                writer.WriteLine(_numSaves += 1);
+            }
 
-             // Create a file stream with a stream reader to store data into the file
-             using (StreamWriter writer = new StreamWriter(new FileStream(_filePathBattleLogs, FileMode.Create)))
-             {
-                 _numSaves += 1;
-                 _game.Save(writer, winner);
-             }
+            // Create a file stream with a stream reader to store data into the file
+            using (StreamWriter writer = new StreamWriter(new FileStream(_filePathBattleLogs, FileMode.Create)))
+            {
+                _numSaves += 1;
+                _game.Save(writer, winner);
+            }
         }
 
         // Method that returns the user to the character selection screen. Creates a new game object, discarding the old one.
