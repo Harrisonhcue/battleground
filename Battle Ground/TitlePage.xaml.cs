@@ -24,7 +24,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Battle_Ground
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Written by Harrison
     /// </summary>
     public sealed partial class TitlePage : Page
     {

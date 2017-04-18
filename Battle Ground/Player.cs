@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Battle_Ground
 {
-
+    /// <summary>
+    /// Written by Harrison
+    /// </summary>
     public class Player
     {
         private string _nickname;

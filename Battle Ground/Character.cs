@@ -7,6 +7,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace Battle_Ground
 {
+    /// <summary>
+    /// Basic character outline that each character type will derive from. Written by Sohail.
+    /// </summary>
     class Character
     {
         // Variables that store the character's image source, name, attack, special attack, defense, special defense, 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Battle_Ground.Characters
 {
+    /// <summary>
+    /// Character type, derives from character class. Written by Sohail
+    /// </summary>
     class Mage : Character
     {
         public Mage()
