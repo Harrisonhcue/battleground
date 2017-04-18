@@ -42,8 +42,7 @@ namespace Battle_Ground
 
         private void loadRules()
         {
-            rules = $"The rules of this game are as follows\n 1.)Each Player selectes a character\n ";
-            rules.ToUpper();
+            rules = $"The rules of this game are as follows\n 1.Choose 1 or 2 players, if 1 player you will be matched against the PC\n 2.Select a character for each player, or choose one at random.\n 3.Each player will choose an attack. \n 4.Attacks will be executed after both players have chosen an attack.\n 5.First player who's character's health reaches 0 loses.";
         }
 
         private void _playBtn_Click(object sender, RoutedEventArgs e)
