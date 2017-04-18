@@ -44,10 +44,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="#FF35788A">
+        <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="#FF35788A" >
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Battle Ground" Margin="20,0,0,20" TextAlignment="Center" FontSize="40" Style="{StaticResource LabelText}" FontFamily="SimSun"/>
         </Border>
-        <Border BorderThickness="5" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#FF35788A">
+        <Border BorderThickness="5" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#FF35788A" Background="#FFF7EFDD">
             <TextBlock x:Name="_txtRules" Grid.Row="1" TextWrapping="Wrap" Text="{x:Bind Path=rules}" Margin="10,10,10,17" FontSize="30" FontFamily="SimSun"/>
         </Border>
         <Button Name="_playBtn" Click="_playBtn_Click" Content="Select Characters" Grid.Row="2" Style="{StaticResource GameButtons}"  Grid.Column="1" Width="304"/>
