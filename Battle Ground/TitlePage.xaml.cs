@@ -94,7 +94,7 @@ namespace Battle_Ground
                     {
                         if (log.Contains("NumSaves.dat") != true)
                         {
-                            _scoreFile += $"{reader.ReadLine()}~{reader.ReadLine()}~{reader.ReadLine()}\n\n";
+                            _scoreFile += $"{reader.ReadLine()}\n{reader.ReadLine()}\n\n";
                         }
                     }
             }
