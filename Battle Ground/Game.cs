@@ -9,6 +9,9 @@ using System.IO;
 
 namespace Battle_Ground
 {
+    /// <summary>
+    /// Written by Harrison
+    /// </summary>
     class Game
     {
         private Player _player1;
@@ -118,12 +121,12 @@ namespace Battle_Ground
 
         }
 
-        // Saves the information of the game into a file.
+        // Saves the information of the game into a file. Written by Sohail
         internal void Save(StreamWriter writer, string winner)
         {
             // Save the game details
 
-            // Check if human to save information appropriately.
+            // Check if player 2 is a human to save information appropriately.
             if (_isHuman == true)
             {
                 writer.WriteLine("Player vs Player");
