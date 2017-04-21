@@ -33,7 +33,9 @@ namespace Battle_Ground
         //Contains the list of rules for this game;
         private string rules;
         private string _scoreFile;
-
+        /// <summary>
+        /// Defualt constructor for the title page
+        /// </summary>
         public TitlePage()
         {
             this.InitializeComponent();
@@ -41,11 +43,18 @@ namespace Battle_Ground
 
         }
 
+        /// <summary>
+        /// lOads the rules into a string file in order to be displayed later on
+        /// </summary>
         private void loadRules()
         {
             rules = $"Rules \n 1.Choose 1 or 2 players, if 1 player you will be matched against the PC\n 2.Select a character for each player, or choose one at random.\n 3.Each player will choose an attack. \n 4.Attacks will be executed after both players have chosen an attack.\n 5.First player who's character's health reaches 0 loses.";
         }
-
+        /// <summary>
+        /// Navigates to the Main menu page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _playBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainMenu));

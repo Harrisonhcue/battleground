@@ -91,7 +91,7 @@ namespace Battle_Ground
 
         }
         /// <summary>
-        /// Toggles whic player mode is currently selected
+        /// Toggles which player mode is currently selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -173,7 +173,11 @@ namespace Battle_Ground
             }
             return value;
         }
-
+        /// <summary>
+        /// Method which randomizes character selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onClickRandomChar(object sender, RoutedEventArgs e)
         {
             //Random character chosen from current characters contained by the game object

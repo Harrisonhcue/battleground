@@ -55,7 +55,7 @@
 
         </RelativePanel>
         <Border Grid.Row="2" Grid.Column="0" Background="#FFE8E4E4">
-            <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="0,0,0,10" TextWrapping="Wrap"  Text="Player 1 Information" FontWeight="Bold" FontSize="25" VerticalAlignment="Top" >
+            <TextBlock x:Name="_txtPlayer1InfoDisplay" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap"  Text="Player 1 Information" FontWeight="Bold" FontSize="25" VerticalAlignment="Top" >
                 <TextBlock.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -65,7 +65,7 @@
             </TextBlock>
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Background="#FFE8E4E4">
-            <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" Margin="0,0,0,10" TextWrapping="Wrap"  Text="Player 2 Information" FontSize="25" FontWeight="Bold" VerticalAlignment="Center">
+            <TextBlock x:Name="_txtPlayer2InfoDisplay" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap"  Text="Player 2 Information" FontSize="25" FontWeight="Bold" VerticalAlignment="Center">
                 <TextBlock.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>

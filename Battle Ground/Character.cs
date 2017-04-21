@@ -32,8 +32,8 @@ namespace Battle_Ground
         // Property to allow other classes to access, and alter, the character's image source
         public string CharImageSource
         {
-            get{ return _charImageSource; }
-            set{ _charImageSource = value; }
+            get { return _charImageSource; }
+            set { _charImageSource = value; }
         }
 
         // Property to allow other classes to access, and alter, the character's name
@@ -81,17 +81,17 @@ namespace Battle_Ground
         }
 
         /// All attacks available to all characters, take the paramaters of the player that is attacking and the player that is being attack
-        
+
         // Beast Attacks
         public void Bite(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg =  Math.Round(_playerAttacking.Character._attk/ _playerAttacked.Character._defense * 15) ;
+            _dmg = Math.Round(_playerAttacking.Character._attk / _playerAttacked.Character._defense * 15);
             _playerAttacked.Character._health -= _dmg;
         }
-        
+
         public void Stomp(Player _playerAttacking, Player _playerAttacked)
         {
-            _dmg = Math.Round(_playerAttacking.Character._attk / _playerAttacked.Character._defense *13);
+            _dmg = Math.Round(_playerAttacking.Character._attk / _playerAttacked.Character._defense * 13);
             _playerAttacked.Character._health -= _dmg;
         }
         public void Thrash(Player _playerAttacking, Player _playerAttacked)
@@ -119,7 +119,7 @@ namespace Battle_Ground
             _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 17);
             _playerAttacked.Character._health -= _dmg;
         }
-        
+
         public void WaterCannon(Player _playerAttacking, Player _playerAttacked)
         {
             _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 16);
