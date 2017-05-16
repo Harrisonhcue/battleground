@@ -26,6 +26,7 @@ namespace Battle_Ground.Presentation
     /// </summary>
     public sealed partial class Gameplay : Page
     {
+        #region Variables
         // Stores navigation context for the game.
         private Game _game;
 
@@ -46,6 +47,7 @@ namespace Battle_Ground.Presentation
 
         // Stores the number of Battle Log save files already created.
         private int _numSaves;
+        #endregion
 
         public Gameplay()
         {
@@ -66,6 +68,7 @@ namespace Battle_Ground.Presentation
             LoadNumSaves();
         }
 
+        #region Methods
         /// <summary>
         /// Sets basic screen information, and provides information to navigation context variable when page is navigated to.
         /// </summary>
@@ -253,7 +256,6 @@ namespace Battle_Ground.Presentation
         /// Displays the updated health of each character as well as which attack they chose and how much damage it dealt.
         /// </summary>
         public void UpdateLabels()
-
         {
             // if character's health is negative, set the character's health bar to 0, else set it to the character's health.
             if (_game.Player1.Character.Health <= 0)
@@ -465,4 +467,5 @@ namespace Battle_Ground.Presentation
             Frame.Navigate(typeof(MainMenu), _game = new Game());
         }
     }
+    #endregion
 }

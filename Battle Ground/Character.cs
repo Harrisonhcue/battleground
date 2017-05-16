@@ -12,6 +12,7 @@ namespace Battle_Ground
     /// </summary>
     class Character
     {
+        #region Variables
         // Variables that store the character's image source, name, attack, special attack, defense, special defense, 
         // health, and damage. Will be overriden by the derived character type classes.
         protected string _charImageSource;
@@ -23,12 +24,17 @@ namespace Battle_Ground
         protected double _defense = 0;
         protected double _spDefense = 0;
 
+        // Stores whether character's attack hit or missed.
+        protected bool _attackHit;
+
         // Variables that store the name of each of the derived character's attacks.
         protected string _attk1Name = "";
         protected string _attk2Name = "";
         protected string _attk3Name = "";
         protected string _attk4Name = "";
+        #endregion
 
+        #region Properties
         // Property to allow other classes to access, and alter, the character's image source
         public string CharImageSource
         {
@@ -79,9 +85,10 @@ namespace Battle_Ground
             get { return _health; }
             set { _health = value; }
         }
+        #endregion
 
+        #region Attacks
         /// All attacks available to all characters, take the paramaters of the player that is attacking and the player that is being attack
-
         // Beast Attacks
         public void Bite(Player _playerAttacking, Player _playerAttacked)
         {
@@ -135,8 +142,9 @@ namespace Battle_Ground
             _dmg = Math.Round(_playerAttacking.Character._spAttack / _playerAttacked.Character._spDefense * 14);
             _playerAttacked.Character._health -= _dmg;
         }
+        #endregion
 
-
+        #region Methods
         // Virtual attack methods that are overriden by each character type with one of the attacks denoted by the derived character type class.
         public virtual void Attack1(Player _playerAttacking, Player _playerAttacked)
         {
@@ -150,5 +158,6 @@ namespace Battle_Ground
         public virtual void Attack4(Player _playerAttacking, Player _playerAttacked)
         {
         }
+        #endregion
     }
 }
